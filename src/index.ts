@@ -9,10 +9,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 
 // app.post('/', (req: any, res: any) => {
-//   const { id, name } = req.body;
-//   const obj = new User(id, name);
-//   users.push(obj);
-//   res.status(201).send('Item created');
+
 // });
 
 const PORT = 4001;
