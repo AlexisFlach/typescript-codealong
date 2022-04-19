@@ -7,8 +7,15 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.get('/', (req: Request, res: Response) => {
+  res.send(users);
+});
+
 app.post('/', (req: Request, res: Response) => {
-  console.log(req.body);
+  const { id, name } = req.body;
+  const obj = new User(id, name);
+  users.push(obj);
+  res.status(201).send('Item created');
 });
 
 const PORT = 4001;
