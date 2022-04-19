@@ -1,22 +1,19 @@
-import express, { Request, Response } from 'express';
-import { User } from './models/User';
-import { users } from './db';
+import express from 'express';
+import userRoutes from './routes/users/userRoutes';
 
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send(users);
-});
+app.use('/api/users', userRoutes);
 
-app.post('/', (req: Request, res: Response) => {
-  const { id, name } = req.body;
-  const obj = new User(id, name);
-  users.push(obj);
-  res.status(201).send('Item created');
-});
+// app.post('/', (req: any, res: any) => {
+//   const { id, name } = req.body;
+//   const obj = new User(id, name);
+//   users.push(obj);
+//   res.status(201).send('Item created');
+// });
 
 const PORT = 4001;
 app.listen(4001, () => {
